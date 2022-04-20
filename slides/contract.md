@@ -140,6 +140,42 @@ impl Mintoooor for Foo {
 
 ---
 
+```solidity [|11]
+use std::crypto::ecrecover;
+
+abi Mintoooor {
+    #[visibility(external)]
+    function mint(v: uint8, r: bytes32, s: bytes32);
+}
+
+impl Mintoooor for Foo {
+    #[visibility(external)]
+    function mint(v: uint8, r: bytes32, s: bytes32) {
+        let a: address = ecrecover(MAGIC, v, r, s).unwrap();
+    }
+}
+```
+
+---
+
+```solidity []
+use std::crypto::ecrecover;
+
+abi Mintoooor {
+    #[visibility(external)]
+    function mint(v: uint8, r: bytes32, s: bytes32);
+}
+
+impl Mintoooor for Foo {
+    #[visibility(external)]
+    function mint(v: uint8, r: bytes32, s: bytes32) {
+        let a = ecrecover(MAGIC, v, r, s).unwrap();
+    }
+}
+```
+
+---
+
 ```rust []
 use std::crypto::ecrecover;
 
@@ -150,7 +186,7 @@ abi Mintoooor {
 
 impl Mintoooor for Foo {
     #[visibility(external)]
-    fn mint(v: u8, r: b256, s: b256)) {
+    fn mint(v: u8, r: b256, s: b256) {
         let a = ecrecover(MAGIC, v, r, s).unwrap();
     }
 }
