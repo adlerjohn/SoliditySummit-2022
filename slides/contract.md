@@ -2,7 +2,7 @@
 
 ---
 
-```solidity [|1,6]
+```solidity [|1,5,6]
 interface Mintoooor {
     function mint(uint8 v, bytes32 r, bytes32 s) external payable;
 }
@@ -84,7 +84,7 @@ impl Mintoooor for Foo {
 
 ---
 
-```solidity []
+```solidity [|11]
 use std::crypto::ecrecover;
 
 abi Mintoooor {
@@ -103,7 +103,7 @@ impl Mintoooor for Foo {
 
 ---
 
-```solidity []
+```solidity [|11,12]
 use std::crypto::ecrecover;
 
 abi Mintoooor {
