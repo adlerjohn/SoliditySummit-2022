@@ -1,1 +1,1 @@
-# What would Solidity look like if it was built today?
+# What would Solidity look like<br>if it was built today?
