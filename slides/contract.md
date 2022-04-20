@@ -2,7 +2,7 @@
 
 ---
 
-```solidity []
+```solidity [|1,6]
 interface Mintoooor {
     function mint(uint8 v, bytes32 r, bytes32 s) external payable;
 }
@@ -17,7 +17,7 @@ contract Foo is Mintoooor {
 
 ---
 
-```solidity []
+```solidity [|2,6]
 abi Mintoooor {
     function mint(uint8 v, bytes32 r, bytes32 s) external payable;
 }
@@ -35,7 +35,7 @@ impl Foo {
 
 ---
 
-```solidity []
+```solidity [|2,7]
 abi Mintoooor {
     #[payability(nonpayable)]
     function mint(uint8 v, bytes32 r, bytes32 s) external;
@@ -52,7 +52,7 @@ impl Mintoooor for Foo {
 
 ---
 
-```solidity []
+```solidity [|2,6]
 abi Mintoooor {
     function mint(uint8 v, bytes32 r, bytes32 s) external;
 }
@@ -67,7 +67,7 @@ impl Mintoooor for Foo {
 
 ---
 
-```solidity []
+```solidity [|9]
 abi Mintoooor {
     #[visibility(external)]
     function mint(uint8 v, bytes32 r, bytes32 s);
@@ -114,8 +114,26 @@ abi Mintoooor {
 impl Mintoooor for Foo {
     #[visibility(external)]
     function mint(uint8 v, bytes32 r, bytes32 s) {
-        Result a = ecrecover(MAGIC, v, r, s);
+        Result r = ecrecover(MAGIC, v, r, s);
         address a = r.unwrap();
+    }
+}
+```
+
+---
+
+```solidity []
+use std::crypto::ecrecover;
+
+abi Mintoooor {
+    #[visibility(external)]
+    function mint(uint8 v, bytes32 r, bytes32 s);
+}
+
+impl Mintoooor for Foo {
+    #[visibility(external)]
+    function mint(uint8 v, bytes32 r, bytes32 s) {
+        address a = ecrecover(MAGIC, v, r, s).unwrap();
     }
 }
 ```
