@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>reveal.js</title>
+	<title>What would Solidity look like if it was built today?</title>
 
 	<link rel="stylesheet" href="dist/reset.css">
 	<link rel="stylesheet" href="dist/reveal.css">
@@ -19,6 +19,8 @@
 	<div class="reveal">
 		<div class="slides">
 			<section data-markdown="./slides/title.md" data-separator-vertical="^----" data-separator-notes="^Note:">
+			</section>
+			<section data-markdown="./slides/contract.md" data-separator-vertical="^----" data-separator-notes="^Note:">
 			</section>
 		</div>
 	</div>
@@ -35,7 +37,21 @@
 			hash: true,
 
 			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+
+			// The "normal" size of the presentation, aspect ratio will
+			// be preserved when the presentation is scaled to fit different
+			// resolutions. Can be specified using percentage units.
+			width: 1920,
+			height: 1080,
+
+			// Factor of the display size that should remain empty around
+			// the content
+			margin: 0.04,
+
+			// Bounds for smallest/largest possible scale to apply to content
+			minScale: 1.0,
+			maxScale: 1.0,
 		});
 	</script>
 </body>
