@@ -122,7 +122,7 @@ impl Mintoooor for Foo {
 
 ---
 
-```solidity []
+```solidity [|11]
 use std::crypto::ecrecover;
 
 abi Mintoooor {
